@@ -1,0 +1,32 @@
+name: Deploy Release Treino
+
+on:
+  workflow_dispatch:
+    inputs:
+      ambiente:
+        description: 'Ambiente de destino'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - producao
+      release_tag:
+        description: 'Versão/Tag da release'
+        required: true
+        default: 'v1.0.0-ham'
+        type: string
+
+jobs:
+  simular-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Executar simulação de deploy
+        run: |
+          echo "Iniciando deploy no ambiente: ${{ inputs.ambiente }}"
+          echo "Versão selecionada: ${{ inputs.release_tag }}"
+          sleep 4
+          echo "Deploy concluído com sucesso!"
