@@ -1,1 +1,3 @@
-versao_aplicada = '1.0.0-release-1'
+
+environment = production versao_aplicada = '1.0.0-release-1'
+
